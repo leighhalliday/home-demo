@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class Home extends React.Component {
+export default class NewHouse extends React.Component {
   static propTypes = {}
 
   render() {
     return (
       <div>
-        Home
+        New House
       </div>
     )
   }
