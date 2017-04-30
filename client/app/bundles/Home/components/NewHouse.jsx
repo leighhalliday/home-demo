@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 import ImagePreview from './ImagePreview';
 
@@ -11,7 +12,9 @@ export default class NewHouse extends React.Component {
     super();
 
     this.state = {
-      files: []
+      files: [],
+      status: 'new',
+      houseId: null
     };
   }
 
@@ -47,7 +50,7 @@ export default class NewHouse extends React.Component {
     data.append('house[price]', this.price.value);
     data.append('house[description]', this.description.value);
     Array.from(this.images.files).forEach((file, index) => {
-      data.append(`house[images][${index}]`, file, file.name);
+      data.append(`house[images_attributes][${index}][photo]`, file, file.name);
     });
 
     const config = {
@@ -56,12 +59,19 @@ export default class NewHouse extends React.Component {
       }
     };
 
-    axios.post('/homes', data, config).then((response) => {
-      console.log(response);
+    axios.post('/houses', data, config).then((response) => {
+      this.setState({
+        status: 'success',
+        houseId: response.data.id
+      });
     });
   }
 
   render() {
+    if (this.state.status === 'success') {
+      return <Redirect to={`/houses/${this.state.houseId}`} />
+    }
+
     return (
       <div>
         <form onSubmit={(e) => this.submitForm(e)}>
