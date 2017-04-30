@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'paperclip', '~> 5.1'
 gem 'react_on_rails', '~> 7.0', '>= 7.0.4'
+gem 'materialize-sass', '~> 0.98.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
