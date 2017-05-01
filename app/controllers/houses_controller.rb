@@ -1,5 +1,6 @@
 class HousesController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
   end
@@ -8,8 +9,7 @@ class HousesController < ApplicationController
   end
 
   def create
-    house = House.new(house_params)
-    house.user = User.first
+    house = current_user.houses.new(house_params)
     if house.save
       render json: house
     else

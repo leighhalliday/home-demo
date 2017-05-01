@@ -27,8 +27,23 @@ export default class HouseInfo extends React.Component {
     })
   }
 
+  filteredHouses = () => {
+    const {houses} = this.props.home;
+
+    if (!houses) {
+      return false;
+    }
+    if (!this.props.home.house) {
+      return false;
+    }
+
+    return houses.filter((house) => {
+      return house.id !== this.props.home.house.id;
+    });
+  }
+
   render() {
-    const {house, houses} = this.props.home;
+    const {house} = this.props.home;
 
     if (!house) {
       return <div>Loading...</div>
@@ -42,7 +57,7 @@ export default class HouseInfo extends React.Component {
           <p>{house.description}</p>
           <ImagePreview images={this.formatImages(house.images)} />
         </main>
-        {houses ? <HouseTiles houses={houses} /> : null}
+        {this.filteredHouses() ? <HouseTiles houses={this.filteredHouses()} /> : null}
       </div>
     )
   }

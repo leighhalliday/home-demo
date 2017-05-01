@@ -76,29 +76,29 @@ export default class NewHouse extends React.Component {
     return (
       <div>
         <form onSubmit={(e) => this.submitForm(e)}>
-          <div>
+          <div className="form-group">
             <label htmlFor="city">City</label>
-            <input type="text" id="city" required ref={(input) => this.city = input}/>
+            <input className="form-control" type="text" id="city" required ref={(input) => this.city = input}/>
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="price">Price</label>
-            <input type="number" id="price" required min="1" step="any" ref={(input) => this.price = input}/>
+            <input className="form-control" type="number" id="price" required min="1" step="any" ref={(input) => this.price = input}/>
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="description">Description</label>
-            <textarea id="description" cols="30" rows="10" ref={(input) => this.description = input}></textarea>
+            <textarea className="form-control" id="description" ref={(input) => this.description = input}></textarea>
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="images">Image</label>
-            <input type="file" id="images" multiple
+            <input className="form-control" type="file" id="images" multiple
               onChange={(e) => this.previewImages(e)}
               ref={(input) => this.images = input} />
           </div>
 
           <ImagePreview images={this.state.files} />
 
-          <div>
-            <button type="submit">Submit</button>
+          <div className="form-group">
+            <button className="btn btn-default" type="submit">Submit</button>
           </div>
         </form>
       </div>

@@ -1,0 +1,15 @@
+.preview-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 25px -10px;
+
+  a {
+    display: block;
+    width: 200px;
+    padding: 10px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
