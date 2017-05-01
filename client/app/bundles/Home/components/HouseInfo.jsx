@@ -2,12 +2,21 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import ImagePreview from './ImagePreview';
+import HouseTiles from './HouseTiles';
 
 export default class HouseInfo extends React.Component {
   static propTypes = {}
 
   componentWillMount() {
     this.props.loadHouse(this.props.match.params.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.props.loadHouse(nextProps.match.params.id);
+    }
   }
 
   formatImages = (images) => {
@@ -21,19 +30,22 @@ export default class HouseInfo extends React.Component {
   }
 
   render() {
-    const {house} = this.props.home;
+    const {house, houses} = this.props.home;
 
     if (!house) {
       return <div>Loading...</div>
     }
 
     return (
-      <main className="house">
-        <h2>{house.city}</h2>
-        <h3>{house.price}</h3>
-        <p>{house.description}</p>
-        <ImagePreview files={this.formatImages(house.images)} />
-      </main>
+      <div>
+        <main className="house">
+          <h2>{house.city}</h2>
+          <h3>{house.price}</h3>
+          <p>{house.description}</p>
+          <ImagePreview files={this.formatImages(house.images)} />
+        </main>
+        {houses ? <HouseTiles houses={houses} /> : null}
+      </div>
     )
   }
 }

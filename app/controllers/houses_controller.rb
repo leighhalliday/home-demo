@@ -1,6 +1,9 @@
 class HousesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def index
+  end
+
   def new
   end
 
@@ -23,6 +26,11 @@ class HousesController < ApplicationController
         render json: @house
       }
     end
+  end
+
+  def featured
+    houses = House.last(4)
+    render json: houses
   end
 
   private
