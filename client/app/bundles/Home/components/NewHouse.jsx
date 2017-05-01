@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import ReactOnRails from 'react-on-rails';
 
 import ImagePreview from './ImagePreview';
 
@@ -54,9 +55,13 @@ export default class NewHouse extends React.Component {
       data.append(`house[images_attributes][${index}][photo]`, file, file.name);
     });
 
+    const csrfToken = ReactOnRails.authenticityToken();
+
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Accept': 'application/json',
+        'X-CSRF-Token': csrfToken
       }
     };
 
