@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import configureStore from '../store/homeStore';
 import HomeContainer from '../containers/HomeContainer';
@@ -18,11 +18,11 @@ const HomeApp = (props, _railsContext) => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div>
-          <Route path="/" exact={true} component={HomeContainer} />
+        <Switch>
+          <Route path="/" exact component={HomeContainer} />
           <Route path="/houses/new" component={NewHouseContainer} />
           <Route path="/houses/:id" component={HouseInfoContainer} />
-        </div>
+        </Switch>
       </BrowserRouter>
     </Provider>
   );

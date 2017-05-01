@@ -56,8 +56,7 @@ export default class NewHouse extends React.Component {
 
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Accept': 'application/json'
+        'Content-Type': 'multipart/form-data'
       }
     };
 
