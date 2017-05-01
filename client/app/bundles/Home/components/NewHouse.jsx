@@ -98,7 +98,7 @@ export default class NewHouse extends React.Component {
           <ImagePreview images={this.state.files} />
 
           <div className="form-group">
-            <button className="btn btn-default" type="submit">Submit</button>
+            <button className="btn btn-primary" type="submit">Submit</button>
           </div>
         </form>
       </div>
