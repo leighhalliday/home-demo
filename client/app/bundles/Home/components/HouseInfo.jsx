@@ -12,8 +12,6 @@ export default class HouseInfo extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.loadHouse(nextProps.match.params.id);
     }
@@ -42,7 +40,7 @@ export default class HouseInfo extends React.Component {
           <h2>{house.city}</h2>
           <h3>{house.price}</h3>
           <p>{house.description}</p>
-          <ImagePreview files={this.formatImages(house.images)} />
+          <ImagePreview images={this.formatImages(house.images)} />
         </main>
         {houses ? <HouseTiles houses={houses} /> : null}
       </div>

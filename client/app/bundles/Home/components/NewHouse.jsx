@@ -95,7 +95,7 @@ export default class NewHouse extends React.Component {
               ref={(input) => this.images = input} />
           </div>
 
-          <ImagePreview files={this.state.files} />
+          <ImagePreview images={this.state.files} />
 
           <div>
             <button type="submit">Submit</button>
