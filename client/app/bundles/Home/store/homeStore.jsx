@@ -1,5 +1,6 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { routerReducer } from 'react-router-redux';
+import thunk from 'redux-thunk'
 
 import homeReducer from '../reducers/homeReducer';
 
@@ -9,7 +10,8 @@ const configureStore = (railsProps) => (
       home: homeReducer,
       routing: routerReducer
     }),
-    railsProps
+    railsProps,
+    applyMiddleware(thunk)
   )
 );
 

@@ -30,7 +30,8 @@ export default class NewHouse extends React.Component {
         const filesCopy = this.state.files.slice();
         filesCopy.push({
           name: file.name,
-          src: reader.result
+          thumb_src: reader.result,
+          medium_src: reader.result
         });
 
         this.setState({
@@ -55,7 +56,8 @@ export default class NewHouse extends React.Component {
 
     const config = {
       headers: {
-        'content-type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Accept': 'application/json'
       }
     };
 

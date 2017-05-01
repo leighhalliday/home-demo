@@ -17,7 +17,7 @@ export default class ImagePreview extends React.Component {
           return (
             <img
               key={file.name}
-              src={file.src} />
+              src={file.thumb_src} />
           )
         })}
       </div>

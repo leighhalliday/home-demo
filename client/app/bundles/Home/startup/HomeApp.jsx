@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import configureStore from '../store/homeStore';
 import HomeContainer from '../containers/HomeContainer';
 import NewHouseContainer from '../containers/NewHouseContainer';
+import HouseInfoContainer from '../containers/HouseInfoContainer';
 
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
@@ -20,6 +21,7 @@ const HomeApp = (props, _railsContext) => {
         <div>
           <Route path="/" exact={true} component={HomeContainer} />
           <Route path="/houses/new" component={NewHouseContainer} />
+          <Route path="/houses/:id" component={HouseInfoContainer} />
         </div>
       </BrowserRouter>
     </Provider>

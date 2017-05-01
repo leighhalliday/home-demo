@@ -8,9 +8,20 @@ class HousesController < ApplicationController
     house = House.new(house_params)
     house.user = User.first
     if house.save
-      render json: house.to_json
+      render json: house
     else
       render json: house.errors.to_json, status: :bad_request
+    end
+  end
+
+  def show
+    @house = House.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: @house
+      }
     end
   end
 
