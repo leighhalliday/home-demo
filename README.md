@@ -1,24 +1,12 @@
-# README
+# Home
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A demo app showing off a React on Rails integration.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone repo
+2. Run `bundle install`
+3. Run `rails db:create` and `rails db:migrate`
+4. Run `yarn install`
+5. Run `yarn run rails-server`
+6. Visit http://localhost:5000 in the browser
