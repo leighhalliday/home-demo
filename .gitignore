@@ -25,3 +25,4 @@ node_modules
 /app/assets/webpack/*
 
 /public/system
+.notes
