@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :houses, only: [:new, :show, :create] do
     collection do
       get :featured
+      get :search
     end
   end
 end

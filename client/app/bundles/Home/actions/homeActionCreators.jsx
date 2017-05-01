@@ -35,3 +35,21 @@ export const featuredHouses = () => {
     });
   }
 }
+
+export const search = (city, min, max) => {
+  return (dispatch) => {
+    axios.get(`/houses/search`, {
+      params: {
+        city: city,
+        min: min,
+        max: max
+      },
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+    }).then((response) => {
+      dispatch({
+        type: SEARCH_HOUSES,
+        houses: response.data
+      });
+    });
+  }
+}

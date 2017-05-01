@@ -33,6 +33,16 @@ class HousesController < ApplicationController
     render json: houses
   end
 
+  def search
+    scope = House
+    scope = scope.where(city: params[:city]) if params[:city].present?
+    scope = scope.where("price >= ?", params[:min]) if params[:min].present?
+    scope = scope.where("price <= ?", params[:max]) if params[:max].present?
+    houses = scope.last(8)
+
+    render json: houses
+  end
+
   private
 
   def house_params

@@ -1,6 +1,7 @@
 import {
   LOAD_HOUSE,
-  LOAD_FEATURED_HOUSES
+  LOAD_FEATURED_HOUSES,
+  SEARCH_HOUSES
 } from '../constants/homeConstants';
 
 const homeReducer = (state = {}, action) => {
@@ -8,6 +9,8 @@ const homeReducer = (state = {}, action) => {
     case LOAD_HOUSE:
       return {...state, house: action.house};
     case LOAD_FEATURED_HOUSES:
+      return {...state, houses: action.houses};
+    case SEARCH_HOUSES:
       return {...state, houses: action.houses};
     default:
       return state;
