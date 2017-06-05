@@ -23,7 +23,7 @@ class HousesController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: @house
+        render json: house
       }
     end
   end
