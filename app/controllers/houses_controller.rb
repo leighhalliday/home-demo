@@ -17,7 +17,8 @@ class HousesController < ApplicationController
   end
 
   def show
-    @house = House.find(params[:id])
+    house = House.find(params[:id])
+    @house_hash = HouseSerializer.new(house).serializable_hash
 
     respond_to do |format|
       format.html

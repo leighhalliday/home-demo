@@ -3,7 +3,7 @@
  "only-multiline"} ] */
 
 const webpack = require('webpack');
-const pathLib = require('path');
+const { resolve } = require('path');
 
 const devBuild = process.env.NODE_ENV !== 'production';
 
@@ -12,12 +12,12 @@ const config = {
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'babel-polyfill',
-    './app/bundles/Home/startup/registration',
+    './app/bundles/Home/startup/serverRegistration',
   ],
 
   output: {
-    filename: 'webpack-bundle.js',
-    path: pathLib.resolve(__dirname, '../app/assets/webpack'),
+    filename: 'server-bundle.js',
+    path: resolve(__dirname, '../app/assets/webpack'),
   },
 
   resolve: {
@@ -25,6 +25,9 @@ const config = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+    new webpack.ProvidePlugin({
+      "React": "react",
+    }),
   ],
   module: {
     rules: [

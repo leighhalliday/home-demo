@@ -8,13 +8,25 @@ export default class HouseInfo extends React.Component {
   static propTypes = {}
 
   componentWillMount() {
-    this.props.loadHouse(this.props.match.params.id);
+    if (this.needHouse(this.props)) {
+      this.props.loadHouse(this.props.match.params.id);
+    }
+    this.props.featuredHouses();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.loadHouse(nextProps.match.params.id);
     }
+  }
+
+  needHouse = (props) => {
+    const {house} = this.props.home;
+    if (!house) {
+      return true;
+    }
+
+    return false;
   }
 
   formatImages = (images) => {
