@@ -1,5 +1,4 @@
 import { Provider } from 'react-redux';
-// StaticRouter is used as opposed to BrowserRouter in server rendering
 import { StaticRouter } from 'react-router';
 
 import configureStore from '../store/homeStore';
